@@ -1,0 +1,10 @@
+{
+  "business_name": "Acme Plumbing",
+  "booking_link": "https://example.com/book",
+  "min_seconds_for_real_call": 30,
+  "templates": {
+    "booked": "Hi {{caller_name}}, thanks for calling {{business_name}}. You're booked in. We'll text you before we arrive. Reply STOP to opt out.",
+    "not_booked": "Hi {{caller_name}}, thanks for calling {{business_name}}. Ready when you are, book here: {{booking_link}} Reply STOP to opt out.",
+    "missed": "Sorry we missed you at {{business_name}}. Reply here or book a time: {{booking_link}} Reply STOP to opt out."
+  }
+}

@@ -1,0 +1,9 @@
+{
+  "name": "voice-agent-skills",
+  "version": "0.1.0",
+  "description": "Build, test and run AI phone agents: prompt writing, knowledge base, Retell deploy, phone numbers, simulated test calls, call QA, SMS follow-up, weekly reports and cost comparison.",
+  "author": { "name": "Mario Lucas", "url": "https://mariolucas.com/skills" },
+  "homepage": "https://github.com/mchristo839/voice-agent-skills",
+  "license": "MIT",
+  "keywords": ["voice-agent", "retell", "twilio", "ai-receptionist", "phone-agent"]
+}

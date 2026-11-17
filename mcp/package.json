@@ -1,0 +1,14 @@
+{
+  "name": "voice-agent-mcp",
+  "version": "0.1.0",
+  "description": "MCP server to create, test and review Retell voice agents from any AI agent",
+  "type": "module",
+  "bin": { "voice-agent-mcp": "server.mjs" },
+  "main": "server.mjs",
+  "engines": { "node": ">=18" },
+  "license": "MIT",
+  "dependencies": {
+    "@modelcontextprotocol/sdk": "^1.17.0",
+    "zod": "^3.25.0"
+  }
+}

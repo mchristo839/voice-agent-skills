@@ -1,0 +1,37 @@
+{
+  "checked": "2026-11-17",
+  "currency": "USD",
+  "sources": {
+    "retell": "https://www.retellai.com/pricing",
+    "vapi": "https://vapi.ai/pricing",
+    "elevenlabs": "https://elevenlabs.io/pricing/agents"
+  },
+  "platforms": {
+    "retell": {
+      "label": "Retell",
+      "per_min": { "platform": 0.055, "voice": 0.015 },
+      "llm_included": false,
+      "telephony_included": false,
+      "notes": "Voice infra $0.055 plus platform voices $0.015. Premium voices cost more. Retell US telephony is about $0.015/min."
+    },
+    "vapi": {
+      "label": "Vapi",
+      "per_min": { "platform": 0.05 },
+      "assumed_per_min": { "speech_to_text": 0.01, "voice": 0.03 },
+      "llm_included": false,
+      "telephony_included": false,
+      "notes": "Platform fee $0.05. Speech, voice, LLM and telephony pass through at provider cost (or $0 to Vapi on your own keys, you pay the provider)."
+    },
+    "elevenlabs": {
+      "label": "ElevenLabs Agents",
+      "per_min": { "platform": 0.08 },
+      "llm_included": false,
+      "telephony_included": false,
+      "notes": "About $0.08/min on paid plans, covers speech and voice. LLM billed separately. Bring your own Twilio or SIP."
+    }
+  },
+  "assumed_defaults": {
+    "llm_per_min": 0.01,
+    "telephony_per_min": 0.014
+  }
+}

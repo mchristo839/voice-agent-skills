@@ -1,0 +1,7 @@
+.env
+node_modules/
+.voice-agent/
+calls/
+tests/
+reports/
+.DS_Store

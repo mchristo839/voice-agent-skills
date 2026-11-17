@@ -1,0 +1,22 @@
+{
+  "name": "Acme Plumbing Receptionist",
+  "voice_id": "retell-Cimo",
+  "language": "en-US",
+  "model": "gpt-5.4-mini",
+  "temperature": 0.2,
+  "transfer_number": "",
+  "webhook_url": "",
+  "dynamic_variables": {
+    "customer_name": "",
+    "business_name": "Acme Plumbing"
+  },
+  "post_call_analysis": [
+    { "type": "system-presets", "name": "call_summary" },
+    { "type": "system-presets", "name": "call_successful" },
+    { "type": "system-presets", "name": "user_sentiment" },
+    { "type": "boolean", "name": "booked", "description": "Did the caller book an appointment or callback?" },
+    { "type": "string", "name": "caller_name", "description": "The caller's full name if they gave it" },
+    { "type": "string", "name": "callback_number", "description": "Best number to reach the caller, in E.164 format if given" },
+    { "type": "string", "name": "reason", "description": "Why the caller called, in under ten words" }
+  ]
+}

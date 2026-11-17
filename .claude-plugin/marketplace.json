@@ -1,0 +1,11 @@
+{
+  "name": "voice-agent-skills",
+  "owner": { "name": "Mario Lucas", "url": "https://mariolucas.com/skills" },
+  "plugins": [
+    {
+      "name": "voice-agent-skills",
+      "source": "./",
+      "description": "Build, test and run AI phone agents from your terminal."
+    }
+  ]
+}
