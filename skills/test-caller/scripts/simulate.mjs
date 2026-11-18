@@ -49,7 +49,7 @@ Persona: ${p.persona}
 Speak like a real person on the phone: short, natural, sometimes messy. Reply with only what you say out loud.
 Stay in persona. When the call is clearly over (goodbye said, or you'd hang up), write [HANG_UP] on its own after your last line.`;
 
-const graderSystem = `You grade AI phone agent calls. Be strict and specific. Return JSON only, no prose, with this shape:
+const graderSystem = `You grade AI phone agent calls. Be strict and specific. System lines show who ended the call. If the agent says it is ending the call but no system line shows it ended, it did not hang up. Return JSON only, no prose, with this shape:
 {"score": 1-10, "passed": true|false, "goal_reached": true|false,
  "issues": [{"turn": n, "problem": "...", "prompt_fix": "the exact line to add or change in the agent prompt"}],
  "good": ["..."]}
@@ -83,13 +83,13 @@ for (const p of personas) {
   ({ said: agentLine, ended: agentEnded } = begin ? { said: begin, ended: false } : await agentTurn());
   for (let t = 0; t < maxTurns; t++) {
     if (agentLine) { transcript.push({ who: 'Agent', text: agentLine }); history.push({ role: 'agent', content: agentLine }); }
-    if (agentEnded) break;
+    if (agentEnded) { transcript.push({ who: 'System', text: '(the agent ended the call)' }); break; }
     callerMsgs.push({ role: 'user', content: agentLine || '(silence)' });
     let callerLine = await claude(callerSystem(p), callerMsgs);
     const callerEnded = callerLine.includes('[HANG_UP]');
     callerLine = callerLine.replace('[HANG_UP]', '').trim();
     if (callerLine) { transcript.push({ who: 'Caller', text: callerLine }); history.push({ role: 'user', content: callerLine }); }
-    if (callerEnded) break;
+    if (callerEnded) { transcript.push({ who: 'System', text: '(the caller hung up)' }); break; }
     callerMsgs.push({ role: 'assistant', content: callerLine || '...' });
     ({ said: agentLine, ended: agentEnded } = await agentTurn());
   }
