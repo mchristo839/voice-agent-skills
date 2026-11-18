@@ -42,7 +42,7 @@ Needs `ANTHROPIC_API_KEY`. Results go to `tests/<date>/`: one transcript per per
 The agent calls the user's phone through Retell so they hear the real thing.
 
 ```bash
-node <skill-dir>/scripts/live-call.mjs --to +15551234567
+node <skill-dir>/scripts/live-call.mjs --to +15125550123
 ```
 
 Options: `--from` (defaults to the number in `.voice-agent/state.json`), `--var customer_name=Sam` (dynamic variables, repeatable).

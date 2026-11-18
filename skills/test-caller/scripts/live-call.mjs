@@ -1,6 +1,6 @@
 #!/usr/bin/env node
 // Have the Retell agent call your own phone.
-// Usage: node live-call.mjs --to +15551234567 [--from +1...] [--agent agent_x] [--var name=value ...]
+// Usage: node live-call.mjs --to +15125550123 [--from +1...] [--agent agent_x] [--var name=value ...]
 import { readFileSync, existsSync } from 'node:fs';
 import { retell, arg } from './_retell.mjs';
 
@@ -9,7 +9,7 @@ const to = arg('to');
 const from = arg('from', state.phone_number);
 const agentId = arg('agent', state.agent_id);
 
-if (!to || !/^\+\d{8,15}$/.test(to)) { console.error('Pass --to in E.164 format, e.g. +15551234567'); process.exit(1); }
+if (!to || !/^\+\d{8,15}$/.test(to)) { console.error('Pass --to in E.164 format, e.g. +15125550123'); process.exit(1); }
 if (!from) { console.error('No from number. Run number-connect first or pass --from'); process.exit(1); }
 
 const vars = {};

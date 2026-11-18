@@ -16,7 +16,7 @@ Run every command from the user's project folder. `<skill-dir>` means the folder
    ```
    TWILIO_ACCOUNT_SID=AC...
    TWILIO_AUTH_TOKEN=...
-   SMS_FROM=+15551234567        # a Twilio number that can send SMS
+   SMS_FROM=+15125550123        # a Twilio number that can send SMS
    WEBHOOK_TOKEN=pick-a-long-random-string
    ```
 3. Make sure `retell-deploy`'s `post_call_analysis` includes the `booked` field (the example config does).

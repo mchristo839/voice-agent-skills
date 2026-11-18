@@ -37,11 +37,11 @@ Needs `TWILIO_ACCOUNT_SID` and `TWILIO_AUTH_TOKEN` in `.env`.
    Options: `--type local|mobile|tollfree`, `--contains 20` (digits the number should contain).
 2. Ask the user which number they want, then buy and wire it:
    ```bash
-   node <skill-dir>/scripts/twilio-sip.mjs --buy +442071234567
+   node <skill-dir>/scripts/twilio-sip.mjs --buy +442079460123
    ```
 3. Already own the Twilio number? Skip buying:
    ```bash
-   node <skill-dir>/scripts/twilio-sip.mjs --use +442071234567
+   node <skill-dir>/scripts/twilio-sip.mjs --use +442079460123
    ```
 
 The script creates an elastic SIP trunk, points origination at Retell, sets up credentials for outbound calls, attaches the number and imports it into Retell with the agent bound for inbound and outbound.

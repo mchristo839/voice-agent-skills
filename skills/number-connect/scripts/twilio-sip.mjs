@@ -3,8 +3,8 @@
 // and import it into Retell with the agent bound.
 //
 // Search:  node twilio-sip.mjs --country GB [--type local|mobile|tollfree] [--contains 20]
-// Buy:     node twilio-sip.mjs --buy +442071234567 [--bundle BUxxx] [--address ADxxx]
-// Reuse:   node twilio-sip.mjs --use +442071234567
+// Buy:     node twilio-sip.mjs --buy +442079460123 [--bundle BUxxx] [--address ADxxx]
+// Reuse:   node twilio-sip.mjs --use +442079460123
 import { readFileSync, writeFileSync, existsSync, mkdirSync } from 'node:fs';
 import { randomBytes } from 'node:crypto';
 import { retell, arg } from './_retell.mjs';
