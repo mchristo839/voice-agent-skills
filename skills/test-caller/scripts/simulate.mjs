@@ -53,7 +53,15 @@ const graderSystem = `You grade AI phone agent calls. Be strict and specific. Sy
 {"score": 1-10, "passed": true|false, "goal_reached": true|false,
  "issues": [{"turn": n, "problem": "...", "prompt_fix": "the exact line to add or change in the agent prompt"}],
  "good": ["..."]}
-Score against: pass condition, one question per turn, short spoken replies, no invented facts, honest about being AI, handled the dead end, ended cleanly.`;
+Keep it short: at most 5 issues, each under 30 words. Score against: pass condition, one question per turn, short spoken replies, no invented facts, honest about being AI, handled the dead end, ended cleanly.`;
+
+// Parse the grader's JSON even if it adds prose or code fences around it.
+function parseJson(raw) {
+  const s = String(raw).replace(/```(json)?/g, '');
+  const a = s.indexOf('{'), b = s.lastIndexOf('}');
+  if (a === -1 || b <= a) throw new Error('no JSON object');
+  return JSON.parse(s.slice(a, b + 1));
+}
 
 const stamp = new Date().toISOString().slice(0, 16).replace(/[:T]/g, '-');
 const outDir = join('tests', stamp);
@@ -96,11 +104,18 @@ for (const p of personas) {
   const text = transcript.map((l, i) => `${i + 1}. ${l.who}: ${l.text}`).join('\n');
   writeFileSync(join(outDir, `${p.id}.md`), `# ${p.id}\n\nPersona: ${p.persona}\nPass if: ${p.pass_if}\n\n${text}\n`);
 
-  const raw = await claude(graderSystem, [{ role: 'user', content: `Agent prompt:\n${agentPrompt}\n\nPersona: ${p.persona}\nPass condition: ${p.pass_if}\n\nTranscript:\n${text}` }], 1200);
+  const gradeMsg = [{ role: 'user', content: `Agent prompt:\n${agentPrompt}\n\nPersona: ${p.persona}\nPass condition: ${p.pass_if}\n\nTranscript:\n${text}` }];
+  let raw = await claude(graderSystem, gradeMsg, 3000);
   let grade;
-  try { grade = JSON.parse(raw.replace(/^```(json)?|```$/g, '').trim()); } catch { grade = { score: 0, passed: false, issues: [{ problem: 'Grader returned bad JSON: ' + raw.slice(0, 200) }] }; }
+  try { grade = parseJson(raw); }
+  catch {
+    // One retry with a stricter, shorter ask before giving up.
+    raw = await claude(graderSystem + '\nYour last answer was not valid JSON. Reply with the JSON object only. At most 4 issues, each under 25 words.', gradeMsg, 3000);
+    try { grade = parseJson(raw); }
+    catch { grade = { score: 0, passed: false, grader_error: true, issues: [{ problem: 'Grader returned unreadable output twice. Rerun this caller.' }] }; }
+  }
   results.push({ id: p.id, ...grade });
-  console.log(`${grade.passed ? 'PASS' : 'FAIL'} ${grade.score}/10`);
+  console.log(grade.grader_error ? 'GRADER ERROR (rerun)' : `${grade.passed ? 'PASS' : 'FAIL'} ${grade.score}/10`);
 }
 
 const passed = results.filter(r => r.passed).length;
