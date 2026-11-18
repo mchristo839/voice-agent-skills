@@ -20,6 +20,8 @@ Built by [Mario Lucas](https://mariolucas.com/skills). Runs on [Retell](https://
 | 8 | [call-report](skills/call-report) | Weekly report with bookings, cost per booking and the trend |
 | 9 | [cost-calc](skills/cost-calc) | Real per-minute cost on Retell, Vapi and ElevenLabs, plus what to charge a client |
 
+New skills ship every week. See what's next in [ROADMAP.md](ROADMAP.md).
+
 There's also an **MCP server** in [`mcp/`](mcp) so any agent can list, test, update and report on your voice agents directly.
 
 ## The 30 minute build
