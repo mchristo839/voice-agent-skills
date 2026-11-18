@@ -92,6 +92,7 @@ Retell runs at roughly $0.07 to $0.31 a minute depending on the model and voice,
 
 ## More from me
 
+- **[Voice Agent QA Kit](https://mariolucas.com/qa-kit):** 30 test callers plus industry packs, regression baselines and a branded report you can send to clients.
 - **[Free Launch Kit](https://mariolucas.com/#kit):** a build guide, prompt templates, n8n workflows, 30 awkward test calls and the calling rules for the US, UK, Australia and EU.
 - **[Build notes](https://mariolucas.com/#notes):** what breaks when voice agents meet real customers, and what fixed it.
 - **[X](https://x.com/mariolucasai) and [YouTube](https://www.youtube.com/@mariolucasai):** new skills land there first.
