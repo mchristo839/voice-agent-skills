@@ -44,6 +44,7 @@ Run every command from the user's project folder. `<skill-dir>` means the folder
 | `webhook_url` | Where Retell posts call events (used by `sms-follow-up`) |
 | `dynamic_variables` | Default values for `{{variables}}` in the prompt |
 | `post_call_analysis` | Fields Retell extracts after each call (used by `call-report`) |
+| `extra_tools` | More tools to keep on every deploy, like the Cal.com tools that `cal-booking` saves here |
 
 ## Rules
 

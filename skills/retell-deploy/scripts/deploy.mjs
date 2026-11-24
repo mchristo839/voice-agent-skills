@@ -27,6 +27,9 @@ if (cfg.transfer_number) tools.push({
   // Cold transfer works everywhere. Switch to warm transfer in the dashboard if you want a handover summary.
   transfer_option: { type: 'cold_transfer', cold_transfer_mode: 'sip_invite' }
 });
+// Tools added in the dashboard (like the Cal.com ones from cal-booking) live in extra_tools,
+// so a redeploy keeps them instead of wiping them.
+if (Array.isArray(cfg.extra_tools)) tools.push(...cfg.extra_tools);
 
 const llmBody = {
   general_prompt: prompt,
