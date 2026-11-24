@@ -2,7 +2,7 @@
 
 The next skills, in order. One ships every week. Want something else? Open an issue.
 
-- [ ] **cal-booking**: connect Cal.com so the agent checks real availability and books during the call
+- [x] **cal-booking**: connect Cal.com so the agent checks real availability and books during the call
 - [ ] **crm-sync**: send every call's result (name, number, reason, booked) to GoHighLevel or HubSpot
 - [ ] **missed-call-textback**: text anyone whose call was missed or dropped within a minute, with a booking link
 - [ ] **outbound-campaign**: call a CSV list with consent checks, calling windows by time zone and a do-not-call list

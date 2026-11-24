@@ -19,6 +19,7 @@ Built by [Mario Lucas](https://mariolucas.com/skills). Runs on [Retell](https://
 | 7 | [sms-follow-up](skills/sms-follow-up) | Texts every caller after the call: booked, not booked or missed |
 | 8 | [call-report](skills/call-report) | Weekly report with bookings, cost per booking and the trend |
 | 9 | [cost-calc](skills/cost-calc) | Real per-minute cost on Retell, Vapi and ElevenLabs, plus what to charge a client |
+| 10 | [cal-booking](skills/cal-booking) | Connects Cal.com so the agent checks real open times and books them during the call |
 
 New skills ship every week. See what's next in [ROADMAP.md](ROADMAP.md).
 
